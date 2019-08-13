@@ -13,7 +13,7 @@ import {
 } from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
 
-import main from './index';
+import main from '../index';
 
 global.alert = jest.fn();
 
