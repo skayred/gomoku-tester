@@ -24,7 +24,7 @@ const checkTurn = (num, sym) => {
   );
 
   expect(
-    document.documentElement.querySelectorAll('td')[num].innerText,
+    document.documentElement.querySelectorAll('td')[num].innerHTML,
   ).toEqual(sym);
 }
 
@@ -67,7 +67,7 @@ test("win_condition_works_1", () => {
 
     expect(global.alert).toBeCalledWith("Player 1 won!");
 
-    checkTurn(4, ' ');
+    checkTurn(4, '');
 });
 
 it("win_condition_works_2", () => {
