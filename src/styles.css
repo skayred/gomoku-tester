@@ -8,8 +8,31 @@ body {
 
 #board table td {
   border: solid 1px;
-  min-width: 50px;
-  height: 50px;
+  min-width: 60px;
+  height: 60px;
   text-align: center;
   vertical-align: middle;
+  font-family: helvetica;
+  font-size: 30px;
+}
+
+td.x {
+    background-color: #7CFC00;
+}
+
+td.o {
+    background-color: #FA8072;
+}
+
+.pb-grey {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pb-bar {
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    transition: width 0.1s;
 }

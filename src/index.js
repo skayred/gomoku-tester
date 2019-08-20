@@ -1,6 +1,8 @@
-// import "./styles.css";
+import "./styles.css";
 
-const emptyOffset = 0; //3;
+const turnTime = 10;
+const tick = 50;
+const emptyOffset = 0;//3;
 const defaultSize = 5;
 let currentPlayer = 1;
 let gameEnded = false;
@@ -161,29 +163,67 @@ const render = () => {
       };
       switch (el) {
         case 1:
+          cell.className = 'x';
           cell.innerText = "x";
           break;
         case 2:
+          cell.className = 'o';
           cell.innerText = "o";
           break;
         default:
           cell.innerText = " ";
       }
-      cell.className = i + "-" + j;
       rowElement.appendChild(cell);
     });
   });
   container.appendChild(table);
 };
 
+const initializeTimer = () => {
+  const container = document.getElementById("timer");
+  container.innerHTML = "<div id='turn'></div>" + 
+                        "<div class=\"pb-grey\">" + 
+                          "<div id=\"pbar\" class=\"pb-bar\" style=\"width:0%\">0%</div>" +
+                        "</div>";
+}
+
+const renderTimer = (player, currentTime) => {
+  const bar = document.getElementById("pbar");
+  const turn = document.getElementById("turn");
+  const percentage = (currentTime/turnTime)*100;
+
+  bar.style.width = percentage + "%";
+  bar.innerText = percentage.toFixed(1) + "%";
+
+  turn.innerText = "Player " + currentPlayer + " turn";
+
+  if (!gameEnded) {
+    setTimeout(() => {
+      if (currentTime > turnTime) {
+        switchPlayer();
+        renderTimer(currentPlayer, 0 + tick/1000);
+      } else if (player !== currentPlayer) {
+        renderTimer(currentPlayer, 0 + tick/1000);
+      } else {
+        renderTimer(currentPlayer, currentTime + tick/1000);
+      }
+    }, tick);
+  }
+}
+
 const main = () => {
   board = [];
-  for (let i = 0; i < defaultSize; i++) {
-    board.push(Array.from({ length: defaultSize }, () => null));
+  for (let i = 0 ; i < defaultSize ; i++) {
+    board.push(Array.from(
+      { length: defaultSize },
+      () => null
+    ));
   }
   gameEnded = false;
   initialize();
+  initializeTimer();
+  renderTimer(currentPlayer, 0);
   render();
-};
+}
 
 export default main;
