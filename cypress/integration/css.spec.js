@@ -8,7 +8,7 @@ describe("game_works", () => {
     cy.visit("/");
 
     cy.get('td:first').should('have.css', 'height', '59px');
-    cy.get('td:first').should('have.css', 'min-width', '60px');
+    cy.get('td:first').should('have.css', 'width', '59px');
     cy.get('td:first').should('have.css', 'text-align', 'center');
     cy.get('td:first').should('have.css', 'vertical-align', 'middle');
   });
