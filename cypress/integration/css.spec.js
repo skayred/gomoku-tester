@@ -17,13 +17,13 @@ describe("game_works", () => {
 
     cy.get('td:first').click();
     cy.get('td:first').should('have.css', 'background-color', 'rgb(124, 252, 0)');
-    cy.get('td:first').should('have.css', 'font-family', 'helvetica');
+    cy.get('td:first').should('have.css', 'font-family');
     cy.get('td:first').should('have.css', 'font-size', '30px');
     cy.get('td:first').contains(new RegExp('x',"i"));
 
     cy.get('td').eq(2).click();
     cy.get('td').eq(2).should('have.css', 'background-color', 'rgb(250, 128, 114)');
-    cy.get('td').eq(2).should('have.css', 'font-family', 'helvetica');
+    cy.get('td').eq(2).should('have.css', 'font-family');
     cy.get('td').eq(2).should('have.css', 'font-size', '30px');
     cy.get('td:first').contains(new RegExp('o',"i"));
   });
