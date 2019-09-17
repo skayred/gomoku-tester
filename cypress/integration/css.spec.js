@@ -25,7 +25,7 @@ describe("game_works", () => {
     cy.get('td').eq(2).should('have.css', 'background-color', 'rgb(250, 128, 114)');
     cy.get('td').eq(2).should('have.css', 'font-family');
     cy.get('td').eq(2).should('have.css', 'font-size', '30px');
-    cy.get('td:first').contains(new RegExp('o',"i"));
+    cy.get('td').eq(2).contains(new RegExp('o',"i"));
   });
   it("table_turn_timeout", () => {
     cy.visit("/");
